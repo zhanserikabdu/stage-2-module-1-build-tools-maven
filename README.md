@@ -26,9 +26,18 @@
 
     <properties>
         <junit.version>5.8.1</junit.version>
+        <maven.jar.plugin.version>2.2</maven.jar.plugin.version>
+        <maven.compiler.plugin.version>2.2</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-params</artifactId>
@@ -37,10 +46,16 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
-                <!-- something should be here-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+            <plugin>
+<!--                add something here-->
             </plugin>
         </plugins>
     </build>
@@ -52,8 +67,8 @@
 ### Task 2
 
 Custom jar `utils-1.3.5.jar` will be created with the following instructions:
- - The jar should contain class `StringUtils` with method `boolean isPositiveNumber(String str)`.
- - `Apache Commons Lang 3.10` library is used to implement this method.
+- The jar should contain class `StringUtils` with method `boolean isPositiveNumber(String str)`.
+- `Apache Commons Lang 3.10` library is used to implement this method.
 
 
 1. Find pom.xml in 'utils' and fill it with proper groupId, artifactId and Apache Commons Lang 3.10 (or higher) dependency
@@ -82,6 +97,10 @@ Custom jar `utils-1.3.5.jar` will be created with the following instructions:
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
         </dependency>
     </dependencies>
 </project>
@@ -118,6 +137,10 @@ Now we will use the created util class:
         
         <dependency>
             <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
         </dependency>
@@ -134,4 +157,9 @@ public class Utils {
 ```
 
 ### Task 4
+
 Make sure that application passes all test suits.
+
+## Extra materials
++ [Gradle installation](https://gradle.org/install/)
++ [Multi-project with Gradle](https://docs.gradle.org/current/userguide/multi_project_builds.html)
