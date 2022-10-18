@@ -159,7 +159,3 @@ public class Utils {
 ### Task 4
 
 Make sure that application passes all test suits.
-
-## Extra materials
-+ [Gradle installation](https://gradle.org/install/)
-+ [Multi-project with Gradle](https://docs.gradle.org/current/userguide/multi_project_builds.html)
